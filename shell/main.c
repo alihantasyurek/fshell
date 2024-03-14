@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:53 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:49:07 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	get_readline(t_mini *mini)
 	mini->cmd = readline("🟢 emmodogl&&aatasyure$");
 	if (mini->cmd && !is_space(mini->cmd))
 	{
-		add_history(mini->cmd);
 		free(mini->cmd);
-		get_readline(mini);
+		get_readline(mini); //continue tarzi bir sey eklenebilir;
 	}
 	if (!mini->cmd)
 	{

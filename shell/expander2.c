@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:16 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:18:57 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:36:16 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	expander_tilde(t_mini *mini, t_list *lex)
 			free(lex->content);
 			lex->content = home;
 		}
+		else // fixed the ~~ leak here
+			free(home); // fixed the ~~ leak here
 	}
 	else
 		free(home);
