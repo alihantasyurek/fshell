@@ -72,11 +72,13 @@ void	start_minishell(t_mini *mini, char **env, int control)
 	}
 }
 
-static int argument_control(int argc, char **argv)
+static int argument_control(int argc, char **argv/*, char **env*/)
 {
 	(void)argv;
 	if (argc != 1) //more optimized?
-		return (printf(W_ARGS), 1); // fixed the error message
+		return (printf(W_ARGS), -1); // fixed the error message
+	//if (!*env)
+		//return (printf(ENV_ERR), -1); // added ENV check
 	return (0);
 }
 
@@ -84,12 +86,13 @@ int	main(int argc, char **argv, char **env)
 {
 	t_mini	*mini;
 
-	if (argument_control(argc, argv) != 0) // def 0 as success and 1 as ERROR; 
-		return (1);
+	if (argument_control(argc, argv/*, env*/) != 0) // def 0 as success and 1 as ERROR; 
+		return (-1);
 	if (init(&mini) != 0)
-		return (1);
-	if (env_get(env, &mini))
-		return (free_init_check(mini), 1);
+		return (-1);
+	if(*env != NULL) // check this on bash in mac
+		if (env_get(env, &mini))
+			return (free_init_check(mini), 1);
 	signals_control();
 	start_minishell(mini, env, 0);
 }

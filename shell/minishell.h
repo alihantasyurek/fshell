@@ -19,7 +19,7 @@
 
 # define W_ARGS "Error! Only needs program name.\n" // fixed the message
 # define A_ERR "Error! Allocation init error.\n"
-# define ENV_ERR "Error ! ENV Error\n"
+# define ENV_ERR "Error! ENV Error\n"
 # define EXEC 0
 # define HEREDOC 1
 # define PIPE 2

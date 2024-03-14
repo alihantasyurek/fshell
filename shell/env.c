@@ -33,16 +33,23 @@ int	env_get(char **env, t_mini **mini)
 	{
 		key_v = malloc(sizeof(t_env));
 		if (!key_v)
-		{
 			return (printf(A_ERR), 1);
-			//TODO; free(other stuff)
-		}
 		str = ft_split(*env, '=');
-		//TODO; if split NULL free(other stuff);
-		key_v->key = ft_strdup(str[0]);
-		//TODO; if strdup NULL free(other stuff);
-		key_v->value = ft_strdup(str[1]);
-		//TODO; if strdup NULL free(other stuff);
+		//if(!str[0] || !str[1]) // added leak protection
+		//{
+		//free(key_v);
+		//free_str(str);
+		//return(printf(ENV_ERR),1);
+		//}
+		if(str[0] == NULL) // choose one of the above
+			key_v->key = NULL;
+		else
+			key_v->key = ft_strdup(str[0]);
+		if(str[1] == NULL)
+			key_v->value = NULL;
+		else
+			key_v->value = ft_strdup(str[1]);
+
 		ft_lstadd_back(&(*mini)->env, ft_lstnew(key_v));
 		free_str(str);
 		env++;

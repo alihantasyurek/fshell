@@ -18,6 +18,8 @@ void	free_init_check(t_mini *mini)
 {
 	if (mini->env)
 		free_(mini);
+	if (mini->lex_list->lex) // find where lex_lists are used 
+		free(mini->lex_list->lex);
 	if (mini->lex_list)
 		free(mini->lex_list);
 	//if (mini->lex_list->lex)
