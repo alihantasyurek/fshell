@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 03:02:00 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 04:10:01 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/04 20:40:06 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/13 13:56:09 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	dsize;
+	size_t	ssize;
 	size_t	i;
-	size_t	a;
-	size_t	sizedst;
-	size_t	sizesrc;
+	size_t	j;
 
-	sizedst = ft_strlen(dst);
-	sizesrc = ft_strlen(src);
-	a = ft_strlen(dst);
-	if (dstsize <= sizedst)
-		return (dstsize + sizesrc);
+	dsize = ft_strlen(dst);
+	ssize = ft_strlen(src);
 	i = 0;
-	while (src[i] != '\0' && a < dstsize - 1)
-	{
-		dst[a] = src[i];
-		a++;
-		i++;
-	}
-	dst[a] = '\0';
-	return (sizedst + sizesrc);
+	j = dsize;
+	if (dstsize <= dsize)
+		return (dstsize + ssize);
+	while (src[i] && j + 1 < dstsize)
+		*(dst + j++) = *(src + i++);
+	dst[dsize + i] = '\0';
+	return (dsize + ssize);
 }

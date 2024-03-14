@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 03:02:27 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 04:09:41 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/06 10:53:35 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 23:56:29 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	c;
-	size_t	n_len;
+	const char	*h;
+	const char	*n;
+	size_t		counter;
 
-	i = 0;
-	n_len = ft_strlen(needle);
-	if (haystack == NULL)
-		return (NULL);
-	if (n_len == 0 || haystack == needle)
+	if (!needle[0])
 		return ((char *)haystack);
-	while (((char *)(haystack))[i] != '\0' && i < len)
+	while (*haystack && len > 0)
 	{
-		c = 0;
-		while (((char *)(haystack))[i + c] != '\0' && needle[c] != '\0'
-			&& ((char *)(haystack))[i + c] == needle[c] && i + c < len)
-			c++;
-		if (c == n_len)
-			return ((char *)(haystack + i));
-		i++;
+		h = haystack;
+		n = needle;
+		counter = 0;
+		while (n[counter] == h[counter] && n[counter] && len - counter > 0)
+			counter++;
+		if (n[counter] == '\0')
+			return ((char *) haystack);
+		len--;
+		haystack++;
 	}
-	return (0);
+	return (NULL);
 }

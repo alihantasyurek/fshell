@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 03:02:32 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 04:09:38 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/05 14:31:19 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 23:53:36 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen(s);
+	i = 0;
+	while (s[i])
+		i++;
 	while (i >= 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
+		if (s[i] == (unsigned char)c)
+			return (&((char *)s)[i]);
 		i--;
 	}
 	return (0);

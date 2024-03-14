@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 02:59:05 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 03:52:30 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/09 16:16:03 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/10 01:10:44 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*ad;
-	t_list	*ap;
+	t_list	*new;
+	t_list	*begin;
+	void	*content;
 
-	ad = NULL;
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	begin = NULL;
 	while (lst)
 	{
-		ap = ft_lstnew(f(lst->content));
-		if (!ap)
+		content = (*f)(lst->content);
+		new = ft_lstnew(content);
+		if (!new)
 		{
-			ft_lstclear(&ad, del);
+			(*del)(content);
+			ft_lstclear(&begin, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&ad, ap);
+		ft_lstadd_back(&begin, new);
 		lst = lst->next;
 	}
-	return (ad);
+	return (begin);
 }

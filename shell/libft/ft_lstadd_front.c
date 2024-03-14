@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 02:58:19 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 02:58:19 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/09 16:14:03 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 16:28:39 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!new)
-		return ;
 	new->next = *lst;
 	*lst = new;
 }

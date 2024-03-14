@@ -3,55 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emmodogl <rootkalixox@gmail.com>           +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 03:02:37 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/14 01:46:16 by emmodogl         ###   ########.fr       */
+/*   Created: 2023/07/09 11:40:25 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 20:35:02 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int	checker(const char *a, char b)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-
-	i = 0;
-	while (a[i] != '\0')
-	{
-		if (a[i] == b)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *s2)
-{
-	int		i;
-	int		end;
-	int		start;
+	size_t	i;
+	size_t	j;
 	char	*str;
 
-	if (!s1)
-		return (NULL);
-	end = ft_strlen(s1);
-	start = 0;
-	while (s1[start] != '\0' && checker(s2, s1[start]))
-		start++;
-	while (start < end && checker(s2, s1[end - 1]))
-		end--;
-	str = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (start < end)
+	str = NULL;
+	if (s1 && set)
 	{
-		str[i] = s1[start];
-		i++;
-		start++;
+		i = 0;
+		j = ft_strlen(s1);
+		while (s1[i] && ft_strchr(set, s1[i]))
+			i++;
+		while (s1[j - 1] && ft_strchr(set, s1[j - 1]) && j > i)
+			j--;
+		str = (char *)malloc(sizeof(char) * (j - i + 1));
+		if (str)
+			ft_strlcpy(str, &s1[i], j - i + 1);
 	}
-	str[i] = '\0';
 	return (str);
 }

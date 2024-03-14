@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:21:07 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 05:30:05 by emsakar          ###   ########.fr       */
+/*   Updated: 2024/03/14 19:40:19 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	create_oldpwd(t_mini *m_mini, char *str)
 	newenv = malloc(sizeof(t_env));
 	if (!newenv)
 		return ;
-	newenv->key = strdup("OLDPWD");
-	newenv->value = strdup(str);
+	newenv->key = ft_strdup("OLDPWD"); //ft_
+	newenv->value = ft_strdup(str); //ft_
 	ft_lstadd_back(&(m_mini->env), ft_lstnew(newenv));
 	return ;
 }

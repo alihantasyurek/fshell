@@ -3,28 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 03:01:52 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 03:01:54 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/09 11:27:10 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/13 17:30:35 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	size_t	len;
+	char	*ss;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 || !s2)
-		return (0);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (0);
-	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
-	ft_strlcat(str, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
-	return (str);
+		return (NULL);
+	i = 0;
+	j = 0;
+	ss = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!ss)
+		return (NULL);
+	while (s1[i])
+	{
+		ss[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		ss[i] = s2[j];
+		i++;
+		j++;
+	}
+	ss[i] = '\0';
+	return (ss);
 }

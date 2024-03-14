@@ -3,58 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 02:58:07 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 02:58:07 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/09 13:09:13 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 23:45:25 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int	ft_cal_number_digits(int n)
+static int	ft_numlenght(int num)
 {
-	int	res;
+	int		numlen;
 
-	res = 0;
-	if (n < 0)
+	numlen = 0;
+	if (num == 0)
+		numlen = 1;
+	if (num < 0)
 	{
-		res++;
-		n *= -1;
+		numlen++;
+		num = -1 * num;
 	}
-	else if (n == 0)
-		return (1);
-	while ((unsigned int)n > 0)
+	while (num != 0)
 	{
-		res++;
-		n = (unsigned int)n / 10;
+		num = num / 10;
+		numlen++;
 	}
-	return (res);
+	return (numlen);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*res;
-	int		num_digits;
+	int		nlen;
+	char	*s;
+	long	num;
 
-	num_digits = ft_cal_number_digits(n);
-	res = malloc((num_digits + 1) * sizeof(char));
-	if (n == 0)
-		res[0] = 48;
-	if (res == NULL)
+	num = (long)n;
+	nlen = ft_numlenght(n);
+	s = malloc(nlen + 1);
+	if (!s)
 		return (NULL);
-	if (n < 0)
+	s[nlen] = '\0';
+	if (num == 0)
+		s[0] = '0';
+	if (num < 0)
 	{
-		res[0] = '-';
-		n *= -1;
+		s[0] = '-';
+		num = -num;
 	}
-	res[num_digits] = '\0';
-	while ((num_digits - 1) >= 0 && (unsigned int)n > 0)
+	nlen--;
+	while (nlen >= 0 && num != 0)
 	{
-		res[num_digits - 1] = ((unsigned int)n % 10) + '0';
-		n = (unsigned int)n / 10;
-		num_digits--;
+		s[nlen] = num % 10 + '0';
+		num = num / 10;
+		nlen--;
 	}
-	return (res);
+	return (s);
 }

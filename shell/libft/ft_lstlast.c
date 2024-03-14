@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsakar <emsakar@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 02:59:00 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/11 02:59:00 by emsakar          ###   ########.fr       */
+/*   Created: 2023/07/09 16:14:27 by atasyure          #+#    #+#             */
+/*   Updated: 2023/07/09 17:50:54 by atasyure         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_list	*ft_lstlast(t_list *lst)
 	if (!lst)
 		return (0);
 	while (lst->next != NULL)
+	{
 		lst = lst->next;
+	}
 	return (lst);
 }
