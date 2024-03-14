@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:16 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:18:57 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	expander_tilde(t_mini *mini, t_list *lex)
 	char	*home;
 	char	*tmp;
 
-	home = get_env(mini->env, "HOME");
+	home = get_env(mini->env, "HOME"); //home malloced
 	content = (char *)lex->content;
 	if (content[0] == '~')
 	{
