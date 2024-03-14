@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emmodogl <rootkalixox@gmail.com>           +#+  +:+       +#+         #
+#    By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/11 05:24:00 by emsakar           #+#    #+#              #
-#    Updated: 2024/03/14 01:15:27 by emmodogl         ###   ########.fr        #
+#    Created: 2024/03/11 05:24:00 by atasyure          #+#    #+#              #
+#    Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

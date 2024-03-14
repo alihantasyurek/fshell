@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 05:23:53 by emsakar           #+#    #+#             */
-/*   Updated: 2024/03/14 15:35:53 by atasyure         ###   ########.fr       */
+/*   Created: 2024/03/11 05:23:53 by atasyure          #+#    #+#             */
+/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		g_heredoc_sig;
 
 void	get_readline(t_mini *mini)
 {
-	mini->cmd = readline("🟢 emmodogl&&atasyure $");
+	mini->cmd = readline("🟢 emmodogl&&aatasyure$");
 	if (mini->cmd && !is_space(mini->cmd))
 	{
 		add_history(mini->cmd);
