@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:21:07 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:35:16 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,5 @@ void	exec_cd(t_parse *data, t_mini *m_mini)
 	}
 	else
 		exec_cd1(str, data, m_mini);
+	free(str);
 }

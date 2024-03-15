@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:53 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/15 18:25:15 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:28:53 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,8 @@ int	main(int argc, char **argv, char **env)
 		return (-1);
 	if (init(&mini) != 0)
 		return (-1);
-	if(*env != NULL)
-		if (env_get(env, &mini))
-			return (free_init_check(mini), 1);
+	if (env_get(env, &mini))
+		return (free_init_check(mini), 1);
 	signals_control();
 	start_minishell(mini, env, 0);
 }

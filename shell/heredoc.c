@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:40 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:43:23 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	get_input(t_parse *parse, int *fd)
 			free(buffer);
 	}
 }
-
+// fd control 
 void	heredoc(t_parse *parse, t_mini *m_mini)
 {
 	int	fd[2];

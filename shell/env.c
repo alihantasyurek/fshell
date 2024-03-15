@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:22:07 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:30:35 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ int	env_get(char **env, t_mini **mini)
 		if (!key_v)
 			return (printf(A_ERR), 1);
 		str = ft_split(*env, '=');
-		//if(!str[0] || !str[1]) // added leak protection
-		//{
-		//free(key_v);
-		//free_str(str);
-		//return(printf(ENV_ERR),1);
-		//}
 		if(str[0] == NULL) // choose one of the above
 			key_v->key = NULL;
 		else
