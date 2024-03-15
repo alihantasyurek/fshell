@@ -30,7 +30,8 @@ void	expand_tilde(t_mini *mini)
 	lex = mini->lex_list->lex;
 	while (lex)
 	{
-		if (((char *)lex->content)[0] == '~')
+		//if (((char *)lex->content)[0] == '~')
+		if (*((char *)(lex->content)) == '~') //changed
 			expander_tilde(mini, lex);
 		lex = lex->next;
 	}

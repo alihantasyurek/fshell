@@ -18,13 +18,10 @@ void	free_init_check(t_mini *mini)
 {
 	if (mini->env)
 		free_(mini);
-	if (mini->lex_list->lex) // find where lex_lists are used 
-		free(mini->lex_list->lex);
+	//if (mini->lex_list->lex) // find where lex_lists are used 
+		//free(mini->lex_list->lex);
 	if (mini->lex_list)
 		free(mini->lex_list);
-	//if (mini->lex_list->lex)
-	//	free(mini->lex_list->lex);
-	// eger env_get fonksiyonundan buraya gelirse valgring 1 error durumu olusuyordu
 	if (mini)
 		free(mini);
 	return ((void)printf(ENV_ERR));

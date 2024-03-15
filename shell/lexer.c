@@ -56,6 +56,7 @@ static int	len_for_separate(char *cmd)
 	return (i);
 }
 
+#include <stdio.h>
 static void separate_cmd(char *cmd, t_lexer **lex_list)
 {
 	int		len;
@@ -76,6 +77,6 @@ static void separate_cmd(char *cmd, t_lexer **lex_list)
 
 void	lexer(t_mini *mini)
 {
-	mini->lex_list->lex = NULL;
+	mini->lex_list->lex = NULL; //abundant?
 	separate_cmd(mini->cmd, &mini->lex_list);
 }

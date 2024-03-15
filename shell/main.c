@@ -37,12 +37,34 @@ void	get_readline(t_mini *mini)
 	add_history(mini->cmd);
 }
 
+void	proper_free(t_list **node)
+{
+	t_list *curr_node;
+	t_list *temp;
+
+	curr_node = *node;
+
+	while(curr_node != NULL)
+	{
+		free(curr_node->content);
+		curr_node->content = NULL;
+		temp = curr_node;
+		curr_node = curr_node->next;
+		free(temp);
+		temp = NULL;
+	}
+}
+
 void	go_parser(t_mini *mini, char **env, int control)
 {
 	control = check(mini);
 	if (!control)
 	{
-		error_free(&(mini->lex_list)->lex);
+		//error_free(&(mini->lex_list)->lex);
+		proper_free(&mini->lex_list->lex);
+
+		// Free memory in the selected code block
+		free_loop(control, mini);
 		return ;
 	}
 	if (ft_strcmp(mini->cmd, ""))
