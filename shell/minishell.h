@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:24:08 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:22:41 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int					export_key_control(char *text);
 int					ft_strchrindex_0(char *s, int c);
 void				signals(int sig);
 void				signals_control(void);
-void				error_free(t_list **node);
+void				proper_free(t_list **node);
 void				go_parser(t_mini *mini, char **env, int control);
 void				get_readline(t_mini *mini);
 int					env_get(char **env, t_mini **mini);

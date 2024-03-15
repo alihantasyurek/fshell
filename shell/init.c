@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:24:46 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:04:13 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:22:28 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,22 @@ int	init(t_mini **mini)
 	return (0);
 }
 
-void	error_free(t_list **node)
+void	proper_free(t_list **node)
 {
-	if (!*node)
-		return ;
-	if ((*node)->next != NULL)
-		free_node((*node)->next);
-	if ((*node)->content)
-		(*node)->content = (free((*node)->content), NULL);
-	if ((*node))
-		(*node) = (free(*node), NULL);
+	t_list *curr_node;
+	t_list *temp;
+
+	curr_node = *node;
+
+	while(curr_node != NULL)
+	{
+		free(curr_node->content);
+		curr_node->content = NULL;
+		temp = curr_node;
+		curr_node = curr_node->next;
+		free(temp);
+		temp = NULL;
+	}
 }
 
 int	single_or_multi_command(t_mini *m_mini)

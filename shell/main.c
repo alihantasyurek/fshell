@@ -6,7 +6,7 @@
 /*   By: atasyure <atasyure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 05:23:53 by atasyure          #+#    #+#             */
-/*   Updated: 2024/03/14 20:49:07 by atasyure         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:25:15 by atasyure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	get_readline(t_mini *mini)
 	if (mini->cmd && !is_space(mini->cmd))
 	{
 		free(mini->cmd);
-		get_readline(mini); //continue tarzi bir sey eklenebilir;
+		get_readline(mini);
 	}
 	if (!mini->cmd)
 	{
@@ -37,23 +37,6 @@ void	get_readline(t_mini *mini)
 	add_history(mini->cmd);
 }
 
-void	proper_free(t_list **node)
-{
-	t_list *curr_node;
-	t_list *temp;
-
-	curr_node = *node;
-
-	while(curr_node != NULL)
-	{
-		free(curr_node->content);
-		curr_node->content = NULL;
-		temp = curr_node;
-		curr_node = curr_node->next;
-		free(temp);
-		temp = NULL;
-	}
-}
 
 void	go_parser(t_mini *mini, char **env, int control)
 {
@@ -61,10 +44,8 @@ void	go_parser(t_mini *mini, char **env, int control)
 	if (!control)
 	{
 		//error_free(&(mini->lex_list)->lex);
-		proper_free(&mini->lex_list->lex);
-
-		// Free memory in the selected code block
-		free_loop(control, mini);
+		proper_free(&mini->lex_list->lex);//added new free func
+		free_loop(control, mini);//maybe only free cmd instead?
 		return ;
 	}
 	if (ft_strcmp(mini->cmd, ""))
@@ -94,13 +75,11 @@ void	start_minishell(t_mini *mini, char **env, int control)
 	}
 }
 
-static int argument_control(int argc, char **argv/*, char **env*/)
+static int argument_control(int argc, char **argv)
 {
 	(void)argv;
-	if (argc != 1) //more optimized?
-		return (printf(W_ARGS), -1); // fixed the error message
-	//if (!*env)
-		//return (printf(ENV_ERR), -1); // added ENV check
+	if (argc != 1) 
+		return (printf(W_ARGS), -1);
 	return (0);
 }
 
@@ -108,11 +87,11 @@ int	main(int argc, char **argv, char **env)
 {
 	t_mini	*mini;
 
-	if (argument_control(argc, argv/*, env*/) != 0) // def 0 as success and 1 as ERROR; 
+	if (argument_control(argc, argv) != 0) // def 0 as success and 1 as ERROR; 
 		return (-1);
 	if (init(&mini) != 0)
 		return (-1);
-	if(*env != NULL) // check this on bash in mac
+	if(*env != NULL)
 		if (env_get(env, &mini))
 			return (free_init_check(mini), 1);
 	signals_control();
